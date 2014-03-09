@@ -27,12 +27,12 @@ software version, the software on the client side and the connection quality.
 
 			browser:
 				name: "string"
-				major: major version int
+				major: "major version"
 				version: "string"
 
 			os:
 				name: "string"
-				major: major version int
+				major: "major version"
 				version: "string"
 
 			device: "string"
@@ -41,9 +41,12 @@ software version, the software on the client side and the connection quality.
 
 			errors:
 				[
-					"video" | "audio" | "peerconnection" | "no access question" | "design bug" | "other" | ..
+					"video" | "audio" | "peerconnection" | "no access request" | "design" | "other" | ..
 				]
 
 			comments: "string"
 		]
+
+Information about browsers, operating systems and device type is parsed using
+[ua-parser](https://github.com/tobie/ua-parser).
 
