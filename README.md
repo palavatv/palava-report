@@ -17,9 +17,9 @@ software version, the software on the client side and the connection quality.
 	portal-revision: "git revision"
 	client-revision: "git revision"
 
-	connection: "local" | "internet" | "mobile"
-
-	known-to-work: true | false
+	connection:
+		type: "local" | "internet" | "mobile"
+		known-to-work: true | false
 
 	clients:
 		[
