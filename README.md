@@ -41,7 +41,7 @@ software version, the software on the client side and the connection quality.
 
 			errors:
 				[
-					"video" | "audio" | "peerconnection" | ...
+					"video" | "audio" | "peerconnection" | "no access question" | "design bug" | "other" | ..
 				]
 
 			comments: "string"
