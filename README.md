@@ -12,7 +12,7 @@ Reports are organized as connections which represent a failed or successfull
 connection between two palava clients. It contains information about the palava
 software version, the software on the client side and the connection quality.
 
-	id: "uuid"
+	time: timestamp
 
 	portal-revision: "git revision"
 	client-revision: "git revision"
@@ -23,8 +23,6 @@ software version, the software on the client side and the connection quality.
 
 	clients:
 		[
-			id: "uuid"
-
 			browser:
 				name: "string"
 				major: "major version"

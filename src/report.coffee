@@ -18,7 +18,7 @@
 #
 ###############################################################################
 
-ObjectID = require('mongodb').ObjectID
+mongodb = require('mongodb')
 ua_parser = require 'ua-parser'
 
 exports.init = (app, db) =>
@@ -28,8 +28,6 @@ exports.init = (app, db) =>
 
   parse_client_data = (body) =>
     data = {}
-
-    console.log body
 
     if body.user_agent != undefined
       agent = ua_parser.parse(body.user_agent)
@@ -49,14 +47,12 @@ exports.init = (app, db) =>
     if body.quality != undefined
       data.quality = parseInt(body.quality)
 
-    if body.errors != undefined
-      if typeof body.errors == 'string'
-        data.errors = [body.errors]
-      else
-        data.errors = body.errors
+    if typeof body.errors == 'string'
+      data.errors = [body.errors]
+    else
+      data.errors = body.errors
 
-    if body.comment != undefined
-      data.comment = body.comment.toString()
+    data.comment = body.comment
 
     return data
 
@@ -93,11 +89,11 @@ exports.init = (app, db) =>
 
     # TODO: check if id present
 
-    id = new ObjectID(body.id)
+    query = { _id: new mongodb.ObjectID(body.id) }
 
     # find existing report
 
-    collection.find { _id: id }, (err, objects) ->
+    collection.find query, (err, objects) ->
       if err
         res.send { error: err }
         return
@@ -119,7 +115,6 @@ exports.init = (app, db) =>
 
         # insert new client data
 
-        query = { _id: id }
         cmd = { $push: { "clients": parse_client_data(body) } }
         opts = { safe: true }
 
