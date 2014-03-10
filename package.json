@@ -1,0 +1,16 @@
+{
+    "name": "palava-report",
+    "description": "Aggregation of user reports about broken and working sessions",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "mongodb": "",
+        "express": "3.x",
+        "connect": "",
+        "jade": "",
+        "stylus": "",
+        "coffee-script": "",
+        "connect-assets": "",
+        "ua-parser": ""
+    }
+}

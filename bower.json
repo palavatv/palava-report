@@ -1,0 +1,6 @@
+{
+    "name": "palava-report",
+    "dependencies": {
+        "jquery": ""
+    }
+}
