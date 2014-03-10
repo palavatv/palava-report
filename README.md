@@ -6,6 +6,10 @@ This is a web app collecting information about working and non-working palava
 sessions. It tries to help maintaining interoperability and identify browsers
 and/or operating systems combinations which are not working.
 
+Reports are collected about direct connections (PeerConnections) between two
+participants. Multiple reports can be created for rooms with more than two
+participants.
+
 ## Data Structure
 
 Each report represent a failed or successfull connection between two palava
@@ -74,7 +78,7 @@ about. This client should then POST the following data to `/extend_report.json`:
 	errors: one or multiple error strings
 	comment: string
 
-There might be reports where the other client did not submit the data. The user
-should be encouraged to transmit the data because only reports with data about
-both sides are really valuable.
+There might be reports which are not extended by the second client. The user
+should be encouraged to transmit the information because only reports with data
+about both sides are really valuable.
 
