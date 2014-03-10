@@ -48,3 +48,33 @@ software on the client side and the connection quality.
 Information about browsers, operating systems and device type is parsed using
 [ua-parser](https://github.com/tobie/ua-parser).
 
+## Report Workflow
+
+Reports are (hopefully) generated in a two step process. In the first step one
+of the participants creates the report. This is done with an Ajax call to
+`/create_report.json` POSTing the following data (for more information about
+the values see above):
+
+	portal_revision: hash
+	client_revision: hash
+	network_type: string
+	known_to_work: true | false
+	user_agent: navigator.userAgent
+	quality: 0-10
+	errors: one or multiple error strings
+	comment: string
+
+The server will respond with a JSON object containing an `id` which should be
+transmitted to the client on the other side of the connection the report is
+about. This client should then POST the following data to `/extend_report.json`:
+
+	id: id of the report created by the other client
+	user_agent: navigator.userAgent
+	quality: 0-10
+	errors: one or multiple error strings
+	comment: string
+
+There might be reports where the other client did not submit the data. The user
+should be encouraged to transmit the data because only reports with data about
+both sides are really valuable.
+
